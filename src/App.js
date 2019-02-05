@@ -13,9 +13,11 @@ class App extends Component {
    this.state = {
      isLoading: true,
      itemDetails: null,
-     title: null,
+     title: '',
      images: null,
-     price: null,
+     price: '',
+     online: false,
+     instore: false,
    }
  }
 
@@ -93,11 +95,17 @@ class App extends Component {
           }
         }
 
+        // these are hilarious because I'm assuming that
+        // 0 = available both online and instore,
+        // 1 = online,
+        // 2 = instore
+        // enums will never die.
+
         // parse through available online
-
+        this.state.online = (myItem[0].purchasingChannelCode == 0 || 1) ? true : false;
         // parse through available instore
+        this.state.instore = (myItem[0].purchasingChannelCode == 0 || 2) ? true : false;
 
-        
         this.setState({ isLoading: false });
       }
     }
@@ -127,11 +135,11 @@ class App extends Component {
             <Quantity />
             <div className="grid-container">
               <div className="grid-item">
-                <button name="pickUpButton" onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
+                <button name="pickUpButton" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
                 <div className="small centered">find in a store</div>
                 </div>
                 <div className="grid-item">
-                <button name="addToCartButton" onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
+                <button name="addToCartButton" disabled={!this.state.instore} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
                 </div>
             </div>
             <div className="grid-container">
