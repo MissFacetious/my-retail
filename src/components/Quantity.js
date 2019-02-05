@@ -30,9 +30,17 @@ class Quantity extends Component {
           <span className="quantity left">quantity: </span>
           &nbsp;
           <span className="right">
-            <span className="minus" data-id="-1" onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span
+              className="minus"
+              data-id="-1"
+              tabindex="0"
+              onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
               {this.state.quantity}
-            <span className="plus" data-id="1" onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span
+              className="plus"
+              data-id="1"
+              tabindex="0"
+              onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </span>
         </div>
       );
