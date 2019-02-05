@@ -13,13 +13,13 @@ class Carousel extends Component {
   render() {
     return (
       <div>
-        <div className="grid-container">
-          <div className="grid-item">
+        <div className="grid-carousel">
+          <div className="grid-image">
             <div className="carousel-back" />
           </div>
-        <div className="grid-item">
+        <div className="grid-image">
         </div>
-        <div className="grid-item">
+        <div className="grid-image">
           <div className="carousel-foward" />
           </div>
         </div>

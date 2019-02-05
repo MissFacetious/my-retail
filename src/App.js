@@ -116,44 +116,58 @@ class App extends Component {
     if (this.state.isLoading) {
       return <p>Loading ...</p>;
     }
+    
     return (
       <div className="content">
         <div className="grid-container">
           <div className="grid-item">
             <div className="text-item-name centered">{this.state.title}</div>
-            <img src="http://target.scene7.com/is/image/Target/14263758" alt="item" />
+            <img className="primary-image" src="http://target.scene7.com/is/image/Target/14263758" alt="item" />
             <div className="small centered"><img className="zoom-image" alt="zoom in" /><span className="small">View Image</span></div>
             <Carousel images={this.state.images}/>
-            <Reviews />
             </div>
             <div className="grid-item">
-            <div><span className="text-item-price"></span>{this.state.price}<span className="small">online price</span></div>
+            <div><span className="text-item-price">{this.state.price}</span> <span className="small">online price</span></div>
             <hr />
             <div className="announce-image"><span className="small announce">spend $50, ship FREE</span></div>
             <div className="announce-image"><span className="small announce">$25 gift card with purchase of a select Ninja Blender</span></div>
             <hr />
             <Quantity />
-            <div className="grid-container">
-              <div className="grid-item">
+            <div className="grid-buttons">
+              <div className="grid-button">
                 <button name="pickUpButton" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
                 <div className="small centered">find in a store</div>
                 </div>
-                <div className="grid-item">
+                <div className="grid-button">
                 <button name="addToCartButton" disabled={!this.state.instore} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
                 </div>
             </div>
-            <div className="grid-container">
-              <div className="grid-item">
+            <div className="grid-returns">
+              <div className="grid-return">
                 <div className="large">returns</div>
               </div>
-              <div className="grid-item">
+              <div className="grid-return">
                 <div className="small">The item must be returned within 30 days of the ship date. See return policy for details. Price, promotions, styles and availiblity may vary by store and online.</div>
               </div>
             </div>
-            <button name="addToRegistryButton" onClick={this.clickAddToRegistry} className="targetSmallButton addToRegistryButton">Add To Registry</button>
-            <button name="addToListButton" onClick={this.clickAddToList} className="targetSmallButton addToListButton">Add To List</button>
-            <button name="shareButton" onClick={this.clickShare} className="targetSmallButton shareButton">Share</button>
+            <div className="grid-3buttons">
+              <div className="grid-3button">
+                <button name="addToRegistryButton" onClick={this.clickAddToRegistry} className="targetSmallButton addToRegistryButton">Add To Registry</button>
+              </div>
+              <div className="grid-3button">
+                <button name="addToListButton" onClick={this.clickAddToList} className="targetSmallButton addToListButton">Add To List</button>
+              </div>
+              <div className="grid-3button">
+                <button name="shareButton" onClick={this.clickShare} className="targetSmallButton shareButton">Share</button>
+              </div>
+            </div>
             <Highlights />
+          </div>
+          <div className="grid-item">
+            <Reviews />
+          </div>
+          <div className="grid-item">
+
           </div>
         </div>
       </div>

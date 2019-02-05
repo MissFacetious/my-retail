@@ -9,11 +9,11 @@ class Reviews extends Component {
     return (
       <div>
         <div className="">overall - view all 14 reviews</div>
-        <div className="grid-container">
-          <div className="grid-item">
+        <div className="grid-reviews">
+          <div className="grid-review">
             <Stars />
           </div>
-          <div className="grid-item">
+          <div className="grid-review">
             <Stars />
           </div>
           </div>
