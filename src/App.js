@@ -5,21 +5,17 @@ import Quantity from './components/Quantity'
 import Highlights from './components/Highlights'
 import './App.css';
 
-// const
-const VARIABLE = "YAY";
-
-// props
-var myDefault = {
-
-};
-
 class App extends Component {
 
  constructor(props) {
    super(props);
    // state
    this.state = {
-
+     isLoading: true,
+     itemDetails: null,
+     title: null,
+     images: null,
+     price: null,
    }
  }
 
@@ -55,27 +51,75 @@ class App extends Component {
   */
  componentDidMount() {
    // load json from file
+   this.setState({ isLoading: true });
     const json = require('./item-data.json');
-    console.log(json);
-    // parse out json into an object we can use for the view
+    if (json != null) {
+      var myItem = json.CatalogEntryView;
 
-    // set object into state
+      if (myItem.length > 0) {
+        // set object into state
+        this.state.itemDetails = myItem[0];
 
+        // parse through title information
+        this.state.title = myItem[0].title;
+
+        // parse through image information
+
+        if (myItem[0].Images.length > 0) {
+          var myImages = myItem[0].Images;
+          if (myImages.length > 0) {
+            console.log(myImages[0]);
+            var imageCount = myImages[0].imageCount;
+            var images = new Array();
+            var primary = myImages[0].PrimaryImage[0].image;
+            images.push(primary);
+
+            var altImages = myImages[0].AlternateImages;
+            for (var i = 0; i < altImages.length; i++) {
+                images.push(altImages[i].image);
+            }
+            this.state.images = images;
+          }
+        }
+
+        // parse through price information
+        var priceOffers = myItem[0].Offers;
+        if (priceOffers.length > 0) {
+          var offers = priceOffers[0];
+          if (offers.OfferPrice.length > 0) {
+              var price = offers.OfferPrice[0];
+              console.log(price.formattedPriceValue);
+              this.state.price = price.formattedPriceValue;
+          }
+        }
+
+        // parse through available online
+
+        // parse through available instore
+
+        
+        this.setState({ isLoading: false });
+      }
+    }
   };
 
   render() {
+    //if (this.state.itemDetails == null) {
+    if (this.state.isLoading) {
+      return <p>Loading ...</p>;
+    }
     return (
       <div className="content">
         <div className="grid-container">
           <div className="grid-item">
-            <div className="text-item-name centered">Name of Product</div>
+            <div className="text-item-name centered">{this.state.title}</div>
             <img src="http://target.scene7.com/is/image/Target/14263758" alt="item" />
             <div className="small centered"><img className="zoom-image" alt="zoom in" /><span className="small">View Image</span></div>
-            <Carousel />
+            <Carousel images={this.state.images}/>
             <Reviews />
             </div>
             <div className="grid-item">
-            <div><span className="text-item-price">$price</span> <span className="small">online price</span></div>
+            <div><span className="text-item-price"></span>{this.state.price}<span className="small">online price</span></div>
             <hr />
             <div className="announce-image"><span className="small announce">spend $50, ship FREE</span></div>
             <div className="announce-image"><span className="small announce">$25 gift card with purchase of a select Ninja Blender</span></div>
