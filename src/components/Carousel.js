@@ -5,84 +5,127 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     // state
+
     this.state = {
-      index: 1,
-      image1: "http://target.scene7.com/is/image/Target/14263758",
-      image2: "http://target.scene7.com/is/image/Target/14263758",
-      image3: "http://target.scene7.com/is/image/Target/14263758",
-      primary: "http://target.scene7.com/is/image/Target/14263758"
+      show: 0,
+      imagePrev: this.props.images[this.props.images.length-1],
+      imageNow: this.props.images[0],
+      imageNext: this.props.images[1],
+      primary: this.props.images[0]
     };
 
-    // populate the default images to show
-    if (this.props.images.length >= 1) {
-      this.state.image1 = this.props.images[0];
-      this.state.image2 = this.props.images[0];
-      this.state.image3 = this.props.images[0];
-    }
-    if (this.props.images.length >= 2) {
-      this.state.image2 = this.props.images[1];
-      this.state.image3 = this.props.images[0];
-    }
-    if (this.props.images.length >= 3) {
-      this.state.image3 = this.props.images[2];
-    }
-    this.state.primary = this.state.image2;
-    //showImages();
-    console.log(this.props.images);
-
-  };
-
-  showImages() {
-    if (this.state.index - 1 < 0) {
-      this.state.image1 = this.props.images[this.props.images.length-1]; // length - 1
-      this.state.image2 = this.props.images[this.state.index]; // index
-      this.state.image3 = this.props.images[this.state.index+1]; // index + 1
-    }
-    else if (this.state.index + 1 > this.props.images.length) {
-      this.state.image1 = this.props.images[this.state.index-1]; // index - 1
-      this.state.image2 = this.props.images[this.state.index]; // index
-      this.state.image3 = this.props.images[0]; // 0
-    }
-    else {
-      this.state.image1 = this.props.images[this.state.index-1]; // index - 1
-      this.state.image2 = this.props.images[this.state.index]; // index
-      this.state.image3 = this.props.images[this.state.index+1]; // index + 1
-    }
-    this.state.primary = this.state.image2;
-  }
-
-  clickLeft() {
-    console.log("clicked left");
-    if (this.state.index <= 1) {
-      console.log("less than the beginning");
-      this.state.index = this.props.images.length;
-    }
-    else {
-      this.state.index--;
-    }
-  };
-
-  clickRight() {
-    console.log("clicked right");
-    if (this.state.index >= this.props.images.length) {
-      console.log("bigger than the end");
-      this.state.index = 0;
-    }
-    else {
-      this.state.index++;
-    }
-
-    // set the current image to the value of the current id - 1 or equals length if at the beginning
+    this.showImages = this.showImages.bind(this);
+    this.clickImage = this.clickImage.bind(this);
+    this.clickLeft = this.clickLeft.bind(this);
+    this.clickRight = this.clickRight.bind(this);
   };
 
   clickImage(event) {
     //this.setState({ image: e.target.dataset.id });
     console.log("clicked image " + event.target.dataset.id);
     // set the current image to the value of the id clicked
+    this.state.show = event.target.dataset.id;
 
-    this.state.index = event.target.dataset.id;
-    this.showImages();
+    var imagePrev = this.refs.imagePrev;
+    var imageNow = this.refs.imageNow;
+    var imageNext = this.refs.imageNext;
+
+    // having a little fun with showing which image is selected currently
+    imagePrev.classList.remove("not-selected-image");
+    imageNow.classList.remove("not-selected-image");
+    imageNext.classList.remove("not-selected-image");
+
+    imagePrev.classList.remove("selected-image");
+    imageNow.classList.remove("selected-image");
+    imageNext.classList.remove("selected-image");
+
+    imagePrev.classList.add("not-selected-image");
+    imageNow.classList.add("not-selected-image");
+    imageNext.classList.add("not-selected-image");
+
+    for (var i=0; i < this.props.images.length; i++) {
+      if (imagePrev.dataset.id == this.state.show) {
+        imagePrev.classList.add("selected-image");
+        imagePrev.classList.remove("not-selected-image");
+      }
+      else if (imageNow.dataset.id == this.state.show) {
+        imageNow.classList.add("selected-image");
+        imageNow.classList.remove("not-selected-image");
+      }
+      else if (imageNext.dataset.id == this.state.show) {
+        imageNext.classList.add("selected-image");
+        imageNext.classList.remove("not-selected-image");
+      }
+      else {
+      }
+    }
+
+    this.setState({
+      show: this.state.show,
+      imagePrev: this.state.imagePrev,
+      imageNow: this.state.imageNow,
+      imageNext: this.state.imageNext,
+      primary: this.props.images[this.state.show]
+    });
   };
+
+  clickLeft() {
+    console.log("clicked left");
+    // show will decrease
+    if (this.state.show <= 0) {
+      this.state.show = this.props.images.length-1;
+    }
+    else {
+      this.state.show -= 1;
+    }
+
+    var prev = this.state.show-1;
+    if (prev < 0) {
+      prev = this.props.images.length-1;
+    }
+    var next = this.state.show+1;
+    if (next > this.props.images.length-1) {
+      next = 0;
+    }
+    this.state.imagePrev = this.props.images[prev];
+    this.state.imageNow = this.props.images[this.state.show];
+    this.state.imageNext= this.props.images[next];
+
+    this.setState({
+      show: this.state.show,
+      imagePrev: this.state.imagePrev,
+      imageNow: this.state.imageNow,
+      imageNext: this.state.imageNext,
+    });
+  };
+
+  clickRight() {
+    console.log("clicked right");
+    // show will increase
+if (this.props.images.length )
+    this.setState({
+      show: this.state.show,
+      imagePrev: this.state.imagePrev,
+      imageNow: this.state.imageNow,
+      imageNext: this.state.imageNext,
+    });
+  };
+
+  showImages() {
+
+    console.log(this.state.show);
+    console.log(this.props.images[this.state.show]);
+    this.state.imageNow = this.props.images[this.state.show];
+
+
+
+    this.setState({
+      show: this.state.show,
+      imagePrev: this.state.imagePrev,
+      imageNow: this.state.imageNow,
+      imageNext: this.state.imageNext,
+    });
+  }
 
   clickZoom() {
     console.log("clicked zoom");
@@ -93,7 +136,7 @@ class Carousel extends Component {
   render() {
     return (
       <div>
-        <img className="primary-image" src="http://target.scene7.com/is/image/Target/14263758" alt="item" />
+        <img className="primary-image" src={this.state.primary.image} alt="item" />
         <p></p>
         <div className="centered zoom">
           <span className="zoom-image" alt="zoom in" onClick={this.clickZoom}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span className="medium">View Image</span>
@@ -102,14 +145,14 @@ class Carousel extends Component {
           <div className="grid-image">
             <div className="carousel-back" onClick={this.clickLeft} />
           </div>
-        <div className="grid-image not-selected-image">
-          <img className="primary-image" data-id="0" onClick={this.clickImage} src={this.state.image1} alt="item" />
+        <div id="imagePrev" className="grid-image">
+          <img className="primary-image not-selected-image" ref="imagePrev" data-id={this.state.imagePrev.key} onClick={this.clickImage} src={this.state.imagePrev.image} alt="item" />
         </div>
-        <div className="grid-image selected-image">
-          <img className="primary-image" data-id="1" onClick={this.clickImage} src={this.state.image2} alt="item" />
+        <div id="imageNow" className="grid-image">
+          <img className="primary-image selected-image" ref="imageNow" data-id={this.state.imageNow.key} onClick={this.clickImage} src={this.state.imageNow.image} alt="item" />
         </div>
-        <div className="grid-image not-selected-image">
-          <img className="primary-image" data-id="2" onClick={this.clickImage} src={this.state.image3} alt="item" />
+        <div id="imageNext" className="grid-image">
+          <img className="primary-image not-selected-image" ref="imageNext" data-id={this.state.imageNext.key} onClick={this.clickImage} src={this.state.imageNext.image} alt="item" />
         </div>
         <div className="grid-image">
           <div className="carousel-foward" onClick={this.clickRight} />

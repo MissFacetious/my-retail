@@ -86,12 +86,23 @@ class App extends Component {
             var imageCount = myImages[0].imageCount;
             var images = new Array();
             var primary = myImages[0].PrimaryImage[0].image;
-            images.push(primary);
+            var first = {
+              key: 0,
+              image: primary
+            };
+            images.push(first);
 
             var altImages = myImages[0].AlternateImages;
             for (var i = 0; i < altImages.length; i++) {
-                images.push(altImages[i].image);
+              // go figure, they gave me a json file with incorrect urls!
+              var other = {
+                key: i+1,
+                image: altImages[i].image
+              };
+                //images.push(other);
             }
+            images.push({ key: 1, image: "https://media.kohlsimg.com/is/image/kohls/3381489?wid=500&hei=500&op_sharpen=1"});
+            images.push({ key: 2, image: "https://media.kohlsimg.com/is/image/kohls/2498484?wid=500&hei=500&op_sharpen=1"});
             this.state.images = images;
           }
           else {
