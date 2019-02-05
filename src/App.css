@@ -119,12 +119,12 @@ body {
 }
 
 .selected-image {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .not-selected-image {
   opacity: 0.5;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .primary-image {
