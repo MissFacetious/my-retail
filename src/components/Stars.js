@@ -6,6 +6,8 @@ class Stars extends Component {
 
   render() {
 
+    // grab from the Reviews options how many stars out of five there are
+    // add the red/gray stars in an array
     var stars = new Array();
     for (var i = 0; i < this.props.option; i++) {
       stars.push("redStar");
@@ -14,6 +16,7 @@ class Stars extends Component {
       stars.push("grayStar");
     }
 
+    // then print out the array out of five to the page
     return (
       <div className="reviewStars" name="review stars">
         <span className={stars[0]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

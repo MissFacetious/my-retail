@@ -12,12 +12,13 @@ class App extends Component {
    // state
    this.state = {
      isLoading: true,
-     itemDetails: null,
+     //itemDetails: null,
      title: '',
      images: null,
      price: '',
      online: false,
      instore: false,
+     quantity: 1
    }
  }
 
@@ -25,27 +26,33 @@ class App extends Component {
  * Below are onClick actions for each button or interactable object on the page.
  */
  clickPickUp() {
-   console.log("clicked pick up");
+   // TODO: Implement clicking the pick up button
+   console.log("TODO: clicked pick up");
  };
 
  clickAddToCart() {
-   console.log("clicked add to cart");
+   // TODO: Implement clicking the add to cart button
+   console.log("TODO: clicked add to cart");
  };
 
  clickAddToRegistry() {
-   console.log("clicked add to registry");
+   // TODO: Implement clicking add to registry button
+   console.log("TODO: clicked add to registry");
  };
 
  clickAddToList() {
-   console.log("clicked add to list");
+   // TODO: Implement clicking add to list button
+   console.log("TODO: clicked add to list");
  };
 
  clickShare() {
-   console.log("clicked share");
+   // TODO: Implement clicking the share button
+   console.log("TODO: clicked share");
  };
 
  clickZoomIn() {
-   console.log("clicked zoom in");
+   // TODO: Implement clicking the zoom in button
+   console.log("TODO: clicked zoom in");
  };
 
  /* componentDidMount
@@ -58,15 +65,20 @@ class App extends Component {
     if (json != null) {
       var myItem = json.CatalogEntryView;
 
+      // check to see if the item exists
       if (myItem.length > 0) {
         // set object into state
-        this.state.itemDetails = myItem[0];
+        //this.state.itemDetails = myItem[0];
 
         // parse through title information
-        this.state.title = myItem[0].title;
+        if (myItem[0].title != null) {
+          this.state.title = myItem[0].title;
+        }
+        else {
+          console.warn("There was no title for this product");
+        }
 
         // parse through image information
-
         if (myItem[0].Images.length > 0) {
           var myImages = myItem[0].Images;
           if (myImages.length > 0) {
@@ -82,6 +94,12 @@ class App extends Component {
             }
             this.state.images = images;
           }
+          else {
+            console.warn("there are no images for this product");
+          }
+        }
+        else {
+          console.warn("there are no images for this product");
         }
 
         // parse through price information
@@ -90,9 +108,14 @@ class App extends Component {
           var offers = priceOffers[0];
           if (offers.OfferPrice.length > 0) {
               var price = offers.OfferPrice[0];
-              console.log(price.formattedPriceValue);
               this.state.price = price.formattedPriceValue;
           }
+          else {
+            console.warn("There was no price for this product");
+          }
+        }
+        else {
+          console.warn("There was no price for this product");
         }
 
         // these are hilarious because I'm assuming that
@@ -106,13 +129,22 @@ class App extends Component {
         // parse through available instore
         this.state.instore = (myItem[0].purchasingChannelCode == 0 || 2) ? true : false;
 
+        // You could add the rest of the information from the json here to be parsed,
+        // such as the reviews, product highlights, promotions, etc
+
+        // When we're done with the parsing, we know we'll loaded up the information
+        // we need to display on the product page.
         this.setState({ isLoading: false });
+      }
+      else {
+        console.warn("There is no item in the json to look up or the json formatting has changed.");
       }
     }
   };
 
   render() {
-    //if (this.state.itemDetails == null) {
+    // render may be called before json is done loading, if that is the case,
+    // wait until the isLoading is true, isLoading will be set to true when done.
     if (this.state.isLoading) {
       return <p>Loading ...</p>;
     }
@@ -130,7 +162,7 @@ class App extends Component {
             <div className="announce-image"><span className="small announce">spend $50, ship FREE</span></div>
             <div className="announce-image"><span className="small announce">$25 gift card with purchase of a select Ninja Blender</span></div>
             <hr />
-            <Quantity />
+            <Quantity quantity={this.state.quantity} />
             <div className="grid-buttons">
               <div className="grid-button">
                 <button name="pickUpButton" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>

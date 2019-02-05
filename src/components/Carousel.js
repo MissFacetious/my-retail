@@ -75,12 +75,12 @@ class Carousel extends Component {
     // set the current image to the value of the current id - 1 or equals length if at the beginning
   };
 
-  clickImage(e) {
+  clickImage(event) {
     //this.setState({ image: e.target.dataset.id });
-    console.log("clicked image " + e.target.dataset.id);
+    console.log("clicked image " + event.target.dataset.id);
     // set the current image to the value of the id clicked
 
-    this.state.index = e.target.dataset.id;
+    this.state.index = event.target.dataset.id;
     this.showImages();
   };
 
