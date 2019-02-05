@@ -5,13 +5,22 @@ class Stars extends Component {
 
 
   render() {
+
+    var stars = new Array();
+    for (var i = 0; i < this.props.option; i++) {
+      stars.push("redStar");
+    }
+    for (var i = 0; i < 5-this.props.option; i++) {
+      stars.push("grayStar");
+    }
+
     return (
       <div className="reviewStars" name="review stars">
-        <span className="redStar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span className="redStar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span className="redStar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span className="redStar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span className="grayStar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className={stars[0]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className={stars[1]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className={stars[2]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className={stars[3]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span className={stars[4]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
       </div>
     );
   };
