@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 
 class Carousel extends Component {
 
+  clickLeft() {
+    console.log("clicked left");
+  };
 
+  clickRight() {
+    console.log("clicked right");
+  };
 
   render() {
     return (

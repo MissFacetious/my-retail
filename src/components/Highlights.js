@@ -10,6 +10,11 @@ class Highlights extends Component {
         <div className="large">product highlights</div>
         <ul>
           <li className="small">bullet point</li>
+          <li className="small">bullet point</li>
+          <li className="small">bullet point</li>
+          <li className="small">bullet point</li>
+          <li className="small">bullet point</li>
+          <li className="small">bullet point</li>
         </ul>
       </div>
     );

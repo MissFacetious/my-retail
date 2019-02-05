@@ -17,6 +17,12 @@ body {
   color: #000;
 }
 
+.centered {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
 .content {
   margin: auto;
   width: 50%;
@@ -26,7 +32,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   justify-content: space-evenly;
 }
 
@@ -35,13 +41,22 @@ body {
   padding: 5px;
 }
 
-.targetButton {
+.targetLargeButton {
   margin: 10px;
   padding: 10px;
   width: 200px;
   height: 45px;
   text-transform: uppercase;
   font-size: 1.1em;
+}
+
+.targetSmallButton {
+  margin: 5px;
+  padding: 5px;
+  width: 140px;
+  height: 25px;
+  text-transform: uppercase;
+  font-size: 0.8em;
 }
 
 .pickUpButton {
@@ -51,6 +66,7 @@ body {
 
 .pickUpButton:hover {
   background-color: #fff;
+  color: #333;
 }
 
 .addToCartButton {
@@ -60,18 +76,52 @@ body {
 
 .addToCartButton:hover {
   background-color: #fff;
+  color: #333;
+}
+
+.addToRegistryButton {
+  background-color: #ddd;
+  color: #333;
+}
+
+.addToRegistryButton:hover {
+  background-color: #333;
+  color: #ddd;
+}
+
+.addToListButton {
+  background-color: #ddd;
+  color: #333;
+}
+
+.addToListButton:hover {
+  background-color: #333;
+  color: #ddd;
+}
+
+.shareButton {
+  background-color: #ddd;
+  color: #333;
+}
+
+.shareButton:hover {
+  background-color: #333;
+  color: #ddd;
 }
 
 .small {
   font-size: 0.6em;
+  padding: 2px;
 }
 
 .medium {
   font-size: 0.75em;
+  padding: 5px;
 }
 
 .large {
   font-size: 1.25em;
+  padding: 10px;
 }
 
 .text-item-name {
@@ -128,6 +178,29 @@ body {
   margin-left: 35px;
   color: #f00;
   text-align: left;
+}
+
+.reviewStars {
+  min-width: 150px;
+  width: 150px;
+}
+
+.redStar {
+  background: url('./images/star-red.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 27px 24px;
+  min-width: 30px;
+  width: 30px;
+}
+
+.grayStar {
+  background: url('./images/star-gray.png') no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 27px 24px;
+  min-width: 30px;
+  width: 30px;
 }
 
 @keyframes App-logo-spin {
