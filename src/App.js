@@ -70,7 +70,7 @@ class App extends Component {
         if (myItem[0].Images.length > 0) {
           var myImages = myItem[0].Images;
           if (myImages.length > 0) {
-            console.log(myImages[0]);
+            //console.log(myImages[0]);
             var imageCount = myImages[0].imageCount;
             var images = new Array();
             var primary = myImages[0].PrimaryImage[0].image;
@@ -116,14 +116,12 @@ class App extends Component {
     if (this.state.isLoading) {
       return <p>Loading ...</p>;
     }
-    
+
     return (
       <div className="content">
         <div className="grid-container">
           <div className="grid-item">
             <div className="text-item-name centered">{this.state.title}</div>
-            <img className="primary-image" src="http://target.scene7.com/is/image/Target/14263758" alt="item" />
-            <div className="small centered"><img className="zoom-image" alt="zoom in" /><span className="small">View Image</span></div>
             <Carousel images={this.state.images}/>
             </div>
             <div className="grid-item">

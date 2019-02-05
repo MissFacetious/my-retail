@@ -15,6 +15,7 @@ body {
   background-color: #fff;
   font-size: 1em;
   color: #000;
+  cursor: auto;
 }
 
 .centered {
@@ -106,13 +107,24 @@ body {
 
 .grid-carousel {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 20px 70px 70px 70px 20px;
   justify-content: space-evenly;
 }
 
 .grid-image {
   background-color: rgba(255, 255, 255, 0.8);
   justify-items: center;
+  width: 70px;
+  height: 70px;
+}
+
+.selected-image {
+  cursor: pointer;
+}
+
+.not-selected-image {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .primary-image {
@@ -218,9 +230,18 @@ button[disabled] {
 }
 
 .zoom-image {
-  background: url('./images/zoom.png') no-repeat;
+  background: url('./images/zoom.png');
+  background-position: center;
+  background-repeat: no-repeat;
   width: 20px;
   height: 20px;
+  padding: 5px 10px 10px 10px;
+  cursor: zoom-in;
+}
+
+.zoom {
+  width: 100%;
+  height: 40px;
 }
 
 .text-reviews {
@@ -240,19 +261,26 @@ button[disabled] {
 }
 
 .carousel-back {
-  background: url('./images/back.png') no-repeat;
+  background: url('./images/back.png');
+  background-position: center;
+  background-repeat: no-repeat;
   width: 20px;
   height: 100px;
+  cursor: pointer;
 }
 
 .carousel-foward {
-  background: url('./images/forward.png') no-repeat;
+  background: url('./images/forward.png');
+  background-position: center;
+  background-repeat: no-repeat;
   width: 20px;
   height: 100px;
+  cursor: pointer;
 }
 
 .announce-image {
-  background: url('./images/red.png') no-repeat;
+  background: url('./images/red.png');
+  background-repeat: no-repeat;
   text-align: left;
   vertical-align: middle;
 }
