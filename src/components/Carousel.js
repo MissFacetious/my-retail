@@ -23,53 +23,49 @@ class Carousel extends Component {
    *
    */
   clickLeft() {
+    var index = this.props.images.length-1;
     // show will decrease
-    if (this.state.show <= 0) {
-      this.state.show = this.props.images.length-1;
+    if (this.state.show > 0) {
+      index = this.state.show - 1;
     }
-    else {
-      this.state.show -= 1;
-    }
-    this.moveImages();
+    this.moveImages(index);
   };
 
   /* clickRight increases the position you are in the scrolling carousel.
    *
    */
   clickRight() {
+    var index = 0;
     // we have two situations, if the user has previously clicked an image or if the image is in the middle being showing
-    if (this.state.show >= this.props.images.length-1) {
-      this.state.show = 0;
+    if (this.state.show < this.props.images.length-1) {
+      index = this.state.show + 1;
     }
-    else {
-      this.state.show += 1;
-    }
-    this.moveImages();
+    this.moveImages(index);
   };
 
   /* moveImages will find the previous, current and next images to display on the page based
    * on if you pressed the left or right button.
    */
-  moveImages() {
-    var prev = this.state.show-1;
+  moveImages(index) {
+    var prev = index-1;
     if (prev < 0) {
       prev = this.props.images.length-1;
     }
-    var next = this.state.show+1;
+    var next = index+1;
     if (next > this.props.images.length-1) {
       next = 0;
     }
 
-    this.state.imagePrev = this.props.images[prev];
-    this.state.imageNow = this.props.images[this.state.show];
-    this.state.imageNext= this.props.images[next];
+    var imagePrev = this.props.images[prev];
+    var imageNow = this.props.images[this.state.show];
+    var imageNext = this.props.images[next];
 
     this.setState({
-      show: this.state.show,
-      imagePrev: this.state.imagePrev,
-      imageNow: this.state.imageNow,
-      imageNext: this.state.imageNext,
-      primary: this.props.images[this.state.show]
+      show: index,
+      imagePrev: imagePrev,
+      imageNow: imageNow,
+      imageNext: imageNext,
+      primary: this.props.images[index]
     });
   }
 
@@ -86,7 +82,7 @@ class Carousel extends Component {
         <div className="centered zoom">
           <span
             className="zoom-image"
-            tabindex="0" 
+            tabIndex="0"
             alt="zoom in"
             onClick={this.clickZoom}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <span className="medium">View Image</span>
@@ -96,7 +92,7 @@ class Carousel extends Component {
             <div
               className="carousel-back"
               onClick={this.clickLeft}
-              tabindex="0" />
+              tabIndex="0" />
           </div>
         <div id="imagePrev" className="grid-image">
           <img
@@ -128,7 +124,7 @@ class Carousel extends Component {
           <div
             className="carousel-foward"
             onClick={this.clickRight}
-            tabindex="0" />
+            tabIndex="0" />
           </div>
         </div>
       </div>

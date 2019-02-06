@@ -61,7 +61,12 @@ class App extends Component {
  componentDidMount() {
    // load json from file
    this.setState({ isLoading: true });
-    const json = require('./item-data.json');
+
+   var title = "";
+   var images = [];
+   var price = "";
+
+   const json = require('./item-data.json');
     if (json != null) {
       var myItem = json.CatalogEntryView;
 
@@ -72,7 +77,7 @@ class App extends Component {
 
         // parse through title information
         if (myItem[0].title != null) {
-          this.state.title = myItem[0].title;
+          title = myItem[0].title;
         }
         else {
           console.warn("There was no title for this product");
@@ -82,9 +87,7 @@ class App extends Component {
         if (myItem[0].Images.length > 0) {
           var myImages = myItem[0].Images;
           if (myImages.length > 0) {
-            //console.log(myImages[0]);
-            var imageCount = myImages[0].imageCount;
-            var images = new Array();
+            //var imageCount = myImages[0].imageCount; // don't need
             var primary = myImages[0].PrimaryImage[0].image;
             var first = {
               key: 0,
@@ -94,14 +97,12 @@ class App extends Component {
 
             var altImages = myImages[0].AlternateImages;
             for (var i = 0; i < altImages.length; i++) {
-              // go figure, they gave me a json file with incorrect urls!
               var other = {
                 key: i+1,
                 image: altImages[i].image
               };
                 images.push(other);
             }
-            this.state.images = images;
           }
           else {
             console.warn("there are no images for this product");
@@ -116,8 +117,8 @@ class App extends Component {
         if (priceOffers.length > 0) {
           var offers = priceOffers[0];
           if (offers.OfferPrice.length > 0) {
-              var price = offers.OfferPrice[0];
-              this.state.price = price.formattedPriceValue;
+              var dollarPrice = offers.OfferPrice[0];
+              price = dollarPrice.formattedPriceValue;
           }
           else {
             console.warn("There was no price for this product");
@@ -134,16 +135,23 @@ class App extends Component {
         // enums will never die.
 
         // parse through available online
-        this.state.online = (myItem[0].purchasingChannelCode == 0 || 1) ? true : false;
+        var online = (myItem[0].purchasingChannelCode === 0 || 1) ? true : false;
         // parse through available instore
-        this.state.instore = (myItem[0].purchasingChannelCode == 0 || 2) ? true : false;
+        var instore = (myItem[0].purchasingChannelCode === 0 || 2) ? true : false;
 
         // You could add the rest of the information from the json here to be parsed,
         // such as the reviews, product highlights, promotions, etc
 
         // When we're done with the parsing, we know we'll loaded up the information
         // we need to display on the product page.
-        this.setState({ isLoading: false });
+        this.setState({
+          isLoading: false,
+          title: title,
+          images: images,
+          price: price,
+          online: online,
+          instore: instore,
+        });
       }
       else {
         console.warn("There is no item in the json to look up or the json formatting has changed.");

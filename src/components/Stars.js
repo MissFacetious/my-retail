@@ -8,11 +8,11 @@ class Stars extends Component {
 
     // grab from the Reviews options how many stars out of five there are
     // add the red/gray stars in an array
-    var stars = new Array();
-    for (var i = 0; i < this.props.option; i++) {
+    var stars = [];
+    for (var r = 0; r < this.props.option; r++) {
       stars.push("redStar");
     }
-    for (var i = 0; i < 5-this.props.option; i++) {
+    for (var g = 0; g < 5-this.props.option; g++) {
       stars.push("grayStar");
     }
 

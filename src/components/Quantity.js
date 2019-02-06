@@ -19,8 +19,8 @@ class Quantity extends Component {
       changeQuantity = parseInt(changeQuantity, 10);
     }
     if (this.state.quantity > 1 || changeQuantity > 0) { // we shouldn't have quantity be less than 1 to add
-      this.state.quantity += changeQuantity;
-      this.setState({ quantity: this.state.quantity });
+      var q = this.state.quantity + changeQuantity;
+      this.setState({ quantity: q });
     }
   }
 
@@ -33,13 +33,13 @@ class Quantity extends Component {
             <span
               className="minus"
               data-id="-1"
-              tabindex="0"
+              tabIndex="0"
               onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
               {this.state.quantity}
             <span
               className="plus"
               data-id="1"
-              tabindex="0"
+              tabIndex="0"
               onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </span>
         </div>
