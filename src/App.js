@@ -99,10 +99,8 @@ class App extends Component {
                 key: i+1,
                 image: altImages[i].image
               };
-                //images.push(other);
+                images.push(other);
             }
-            images.push({ key: 1, image: "https://media.kohlsimg.com/is/image/kohls/3381489?wid=500&hei=500&op_sharpen=1"});
-            images.push({ key: 2, image: "https://media.kohlsimg.com/is/image/kohls/2498484?wid=500&hei=500&op_sharpen=1"});
             this.state.images = images;
           }
           else {
