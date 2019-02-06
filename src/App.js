@@ -65,6 +65,8 @@ class App extends Component {
    var title = "";
    var images = [];
    var price = "";
+   var proReview = {};
+   var conReview = {};
 
    const json = require('./item-data.json');
     if (json != null) {
@@ -139,6 +141,20 @@ class App extends Component {
         // parse through available instore
         var instore = (myItem[0].purchasingChannelCode === 0 || 2) ? true : false;
 
+        if (myItem[0].CustomerReview.length > 0) {
+          var reviews = myItem[0].CustomerReview[0];
+          if (reviews.Pro.length > 0) {
+            proReview = reviews.Pro[0];
+          }
+          if (reviews.Con.length > 0) {
+            conReview = reviews.Con[0];
+          }
+        }
+        else {
+          console.log("There was no reviews for this product");
+        }
+
+
         // You could add the rest of the information from the json here to be parsed,
         // such as the reviews, product highlights, promotions, etc
 
@@ -151,6 +167,8 @@ class App extends Component {
           price: price,
           online: online,
           instore: instore,
+          proReview: proReview,
+          conReview: conReview
         });
       }
       else {
@@ -211,7 +229,7 @@ class App extends Component {
             <Highlights />
           </div>
           <div className="grid-item">
-            <Reviews />
+            <Reviews proReview={this.state.proReview} conReview={this.state.conReview} />
           </div>
           <div className="grid-item">
 

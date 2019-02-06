@@ -18,13 +18,13 @@ class Stars extends Component {
 
     // then print out the array out of five to the page
     return (
-      <div className="reviewStars" name="review stars">
+      <span className="reviewStars" name="review stars">
         <span className={stars[0]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[1]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[2]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[3]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[4]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      </div>
+      </span>
     );
   };
 }

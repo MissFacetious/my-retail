@@ -85,10 +85,11 @@ body {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-evenly;
+  background-color: #eee;
 }
 
 .grid-review {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #eee;
   justify-items: center;
 }
 
@@ -281,6 +282,7 @@ button[disabled] {
 .reviewStars {
   min-width: 150px;
   width: 150px;
+  padding: 3px;
 }
 
 .redStar {
