@@ -80,7 +80,7 @@ class Carousel extends Component {
     }
 
     var imagePrev = this.props.images[prev];
-    var imageNow = this.props.images[this.state.show];
+    var imageNow = this.props.images[index];
     var imageNext = this.props.images[next];
 
     this.setState({
