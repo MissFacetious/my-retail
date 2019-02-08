@@ -5,13 +5,27 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     // state
+    var imagePrev = "";
+    var imageNow = "";
+    var imageNext = ""
+
+    if (this.props.images != null) { // if we have more than 1 images
+      if (this.props.images.length > 1) {
+        imagePrev = this.props.images[this.props.images.length-1];
+        imageNow = this.props.images[0];
+        imageNext = this.props.images[1];
+      }
+      if (this.props.images.length > 0) { // if we only have 1 image
+        imageNow = this.props.images[0];
+      }
+    }
 
     this.state = {
       show: 0,
-      imagePrev: this.props.images[this.props.images.length-1],
-      imageNow: this.props.images[0],
-      imageNext: this.props.images[1],
-      primary: this.props.images[0]
+      imagePrev: imagePrev,
+      imageNow: imageNow,
+      imageNext: imageNext,
+      primary: imageNow
     };
 
     this.moveImages = this.moveImages.bind(this);
@@ -23,7 +37,10 @@ class Carousel extends Component {
    *
    */
   clickLeft() {
-    var index = this.props.images.length-1;
+    var index = 0;
+    if (this.props.images != null && this.props.images.length > 0) {
+      index = this.props.images.length-1;
+    }
     // show will decrease
     if (this.state.show > 0) {
       index = this.state.show - 1;
@@ -37,8 +54,10 @@ class Carousel extends Component {
   clickRight() {
     var index = 0;
     // we have two situations, if the user has previously clicked an image or if the image is in the middle being showing
-    if (this.state.show < this.props.images.length-1) {
-      index = this.state.show + 1;
+    if (this.props.images != null && this.props.images.length > 0) {
+      if (this.state.show < this.props.images.length-1) {
+        index = this.state.show + 1;
+      }
     }
     this.moveImages(index);
   };
@@ -48,12 +67,16 @@ class Carousel extends Component {
    */
   moveImages(index) {
     var prev = index-1;
-    if (prev < 0) {
-      prev = this.props.images.length-1;
+      if (this.props.images != null && this.props.images.length > 0) {
+        if (prev < 0) {
+          prev = this.props.images.length-1;
+        }
     }
     var next = index+1;
-    if (next > this.props.images.length-1) {
-      next = 0;
+    if (this.props.images != null && this.props.images.length > 0) {
+      if (next > this.props.images.length-1) {
+        next = 0;
+      }
     }
 
     var imagePrev = this.props.images[prev];
@@ -71,19 +94,24 @@ class Carousel extends Component {
 
   clickZoom() {
     console.log("clicked zoom");
-    // set the current image to the value of the current id + 1 or equals 1 if at the end
+    // TODO: enlarge the primary image
   };
 
   render() {
     return (
       <div>
-        <img className="primary-image" src={this.state.primary.image} alt="item" />
+        <img className="primary-image"
+          src={this.state.primary.image}
+          data-id={this.state.primary.key}
+          data-testid={this.state.primary.key}
+          alt="product" />
         <p></p>
         <div className="centered zoom">
           <span
             className="zoom-image"
             tabIndex="0"
             alt="zoom in"
+            data-testid="zoomIn"
             onClick={this.clickZoom}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <span className="medium">View Image</span>
         </div>
@@ -92,6 +120,7 @@ class Carousel extends Component {
             <div
               className="carousel-back"
               onClick={this.clickLeft}
+              data-testid="clickLeft"
               tabIndex="0" />
           </div>
         <div id="imagePrev" className="grid-image">
@@ -99,31 +128,36 @@ class Carousel extends Component {
             className="primary-image not-selected-image"
             ref="imagePrev"
             data-id={this.state.imagePrev.key}
+            data-testid={this.state.imagePrev.key}
             onClick={this.clickImage}
             src={this.state.imagePrev.image}
-            alt="item" />
+            alt="previous preview" />
         </div>
         <div id="imageNow" className="grid-image">
           <img
             className="primary-image selected-image"
             ref="imageNow"
             data-id={this.state.imageNow.key}
+            data-testid={this.state.imageNow.key}
             onClick={this.clickImage}
             src={this.state.imageNow.image}
-            alt="item" />
+            alt="product preview" />
         </div>
         <div id="imageNext" className="grid-image">
           <img
             className="primary-image not-selected-image"
-            ref="imageNext" data-id={this.state.imageNext.key}
+            ref="imageNext"
+            data-id={this.state.imageNext.key}
+            data-testid={this.state.imageNext.key}
             onClick={this.clickImage}
             src={this.state.imageNext.image}
-            alt="item" />
+            alt="next preview" />
         </div>
         <div className="grid-image">
           <div
             className="carousel-foward"
             onClick={this.clickRight}
+            data-testid="clickRight"
             tabIndex="0" />
           </div>
         </div>

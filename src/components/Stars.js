@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 
 class Stars extends Component {
 
-
-
   render() {
-
     // grab from the Reviews options how many stars out of five there are
     // add the red/gray stars in an array
     var stars = [];
@@ -18,7 +15,11 @@ class Stars extends Component {
 
     // then print out the array out of five to the page
     return (
-      <span className="reviewStars" name="review stars">
+      <span
+        className="reviewStars"
+        name="review stars"
+        data-id={this.props.option}
+        data-testid="stars-numbers">
         <span className={stars[0]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[1]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span className={stars[2]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
