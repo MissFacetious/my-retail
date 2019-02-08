@@ -30,7 +30,7 @@ class Reviews extends Component {
 
     return (
       <div>
-        <div><Stars option="5"/><span className="medium">overall</span>
+        <div><Stars option="5"/><span className="medium" data-testid="review-overall">overall</span>
         <span className="medium">view all 14 reviews</span></div>
         <p></p>
         <div className="grid-reviews">
@@ -38,17 +38,17 @@ class Reviews extends Component {
             <h2 className="medium">PRO</h2>
             <p className="medium">most helpful 4-5 star review</p>
             <Stars option={this.props.proReview.overallRating} />
-            <h3 className="medium">{this.props.proReview.title}</h3>
-            <p className="medium">{this.props.proReview.review}</p>
-            <p className="medium">{this.props.proReview.screenName} {this.props.proReview.datePosted}</p>
+            <h3 className="medium" data-testid="review-protitle">{this.props.proReview.title}</h3>
+            <p className="medium" data-testid="review-proreview">{this.props.proReview.review}</p>
+            <p className="medium" data-testid="review-proname">{this.props.proReview.screenName} {this.props.proReview.datePosted}</p>
           </div>
           <div className="grid-review">
             <h2 className="medium">CON</h2>
             <p className="medium">most helpful 1-2 star review</p>
             <Stars option={this.props.conReview.overallRating}/>
-            <h3 className="medium">{this.props.conReview.title}</h3>
-            <p className="medium">{this.props.conReview.review}</p>
-            <p className="medium">{this.props.conReview.screenName} {this.props.conReview.datePosted}</p>
+            <h3 className="medium" data-testid="review-contitle">{this.props.conReview.title}</h3>
+            <p className="medium" data-testid="review-conreview">{this.props.conReview.review}</p>
+            <p className="medium" data-testid="review-conname">{this.props.conReview.screenName} {this.props.conReview.datePosted}</p>
           </div>
           </div>
       </div>
