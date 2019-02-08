@@ -188,23 +188,23 @@ class App extends Component {
       <div className="content">
         <div className="grid-container">
           <div className="grid-item">
-            <div className="text-item-name centered">{this.state.title}</div>
+            <div className="text-item-name centered" data-testid="item-title">{this.state.title}</div>
             <Carousel images={this.state.images}/>
             </div>
             <div className="grid-item">
-            <div><span className="text-item-price">{this.state.price}</span> <span className="small">online price</span></div>
+            <div><span className="text-item-price" data-testid="item-price">{this.state.price}</span> <span className="small">online price</span></div>
             <hr />
-            <div className="announce-image"><span className="small announce">spend $50, ship FREE</span></div>
-            <div className="announce-image"><span className="small announce">$25 gift card with purchase of a select Ninja Blender</span></div>
+            <div className="announce-image"><span className="small announce" data-testid="item-ship">spend $50, ship FREE</span></div>
+            <div className="announce-image"><span className="small announce" data-testid="item-gift">$25 gift card with purchase of a select Ninja Blender</span></div>
             <hr />
             <Quantity quantity={this.state.quantity} />
             <div className="grid-buttons">
               <div className="grid-button">
-                <button name="pickUpButton" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
+                <button name="pickUpButton" data-testid="item-instore" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
                 <div className="small centered">find in a store</div>
                 </div>
                 <div className="grid-button">
-                <button name="addToCartButton" disabled={!this.state.instore} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
+                <button name="addToCartButton" data-testid="item-online" disabled={!this.state.online} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
                 </div>
             </div>
             <div className="grid-returns">
@@ -212,7 +212,7 @@ class App extends Component {
                 <div className="large">returns</div>
               </div>
               <div className="grid-return">
-                <div className="small">The item must be returned within 30 days of the ship date. See return policy for details. Price, promotions, styles and availiblity may vary by store and online.</div>
+                <div className="small" data-testid="item-return">The item must be returned within 30 days of the ship date. See return policy for details. Price, promotions, styles and availiblity may vary by store and online.</div>
               </div>
             </div>
             <div className="grid-3buttons">

@@ -31,12 +31,14 @@ class Quantity extends Component {
           &nbsp;
           <span className="right">
             <span
+              data-testid="quantity-minus"
               className="minus"
               data-id="-1"
               tabIndex="0"
               onClick={this.quantityChange}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              {this.state.quantity}
+            <span data-testid="quantity-number">{this.state.quantity}</span>
             <span
+              data-testid="quantity-plus"
               className="plus"
               data-id="1"
               tabIndex="0"

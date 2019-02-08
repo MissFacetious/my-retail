@@ -23,6 +23,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "json-loader": "^0.5.7"
+    "json-loader": "^0.5.7",
+    "react-testing-library": "^5.5.3"
   }
 }
