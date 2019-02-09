@@ -17,7 +17,6 @@ class Stars extends Component {
     return (
       <span
         className="reviewStars"
-        name="review stars"
         data-id={this.props.option}
         data-testid="stars-numbers">
         <span className={stars[0]}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

@@ -7,16 +7,5 @@ import Quantity from './Quantity';
 const { getByText, getByTestId } = render(<Quantity quantity="3" />);
 
 it('test set quantity', () => {
-
-  expect(getByTestId('quantity-number')).toHaveTextContent("3");
-});
-
-it('test increasing quantity', () => {
-
-  expect(getByTestId('quantity-number')).toHaveTextContent("3");
-});
-
-it('test decreasing quantity', () => {
-
   expect(getByTestId('quantity-number')).toHaveTextContent("3");
 });

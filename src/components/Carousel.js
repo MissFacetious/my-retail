@@ -103,7 +103,7 @@ class Carousel extends Component {
         <img className="primary-image"
           src={this.state.primary.image}
           data-id={this.state.primary.key}
-          data-testid={this.state.primary.key}
+          data-testid="primary"
           alt="product" />
         <p></p>
         <div className="centered zoom">
@@ -128,7 +128,7 @@ class Carousel extends Component {
             className="primary-image not-selected-image"
             ref="imagePrev"
             data-id={this.state.imagePrev.key}
-            data-testid={this.state.imagePrev.key}
+            data-testid="imagePrev"
             onClick={this.clickImage}
             src={this.state.imagePrev.image}
             alt="previous preview" />
@@ -138,7 +138,7 @@ class Carousel extends Component {
             className="primary-image selected-image"
             ref="imageNow"
             data-id={this.state.imageNow.key}
-            data-testid={this.state.imageNow.key}
+            data-testid="imageNow"
             onClick={this.clickImage}
             src={this.state.imageNow.image}
             alt="product preview" />
@@ -148,7 +148,7 @@ class Carousel extends Component {
             className="primary-image not-selected-image"
             ref="imageNext"
             data-id={this.state.imageNext.key}
-            data-testid={this.state.imageNext.key}
+            data-testid="imageNext"
             onClick={this.clickImage}
             src={this.state.imageNext.image}
             alt="next preview" />
