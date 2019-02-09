@@ -12,15 +12,24 @@ This page is written in Javascript using React as the UI layer. It imports a JSO
 
 Lisa Walkosz-Migliacio evilisa@gmail.com
 
-### `npm start`
+### Working Demo
 
+A working demo is available at: https://missfacetious.github.io/my-retail/
+
+### Continuous Delivery Flow
+
+This project is setup to be run on a development machine, automated tests run, built for production, and then deployed on gitpages.
+
+#### Run on development machine `npm start`
 Start the application with `npm start` for a new browser to view the page.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm test`
+#### Run Automated Tests `npm test`
+Included is a test suite of unit tests for the app and components. Test the code with `npm test`. After the tests are all passing, you can build for production.
 
-Included is a test suite of unit tests for the app and components. Test the code with `npm test`.
-
-### `npm run build`
-
+#### Build for Production `npm run build`
 Create a built webpage that can be deployed.
+
+#### Deploy on GitPages
+Deploy the built static files on a remote server using `npm run build`. It will sent the build files to the gh-pages branch.
+https://missfacetious.github.io/my-retail/ will then display the served files.
