@@ -12,7 +12,6 @@ class App extends Component {
    // state
    this.state = {
      isLoading: true,
-     //itemDetails: null,
      title: '',
      images: null,
      price: '',
@@ -99,11 +98,13 @@ class App extends Component {
 
             var altImages = myImages[0].AlternateImages;
             for (var i = 0; i < altImages.length; i++) {
+              // this is the assumption we have at least 2 pictures or more.
+              // If you only had one, what is the point of a carousel?
               var other = {
                 key: i+1,
                 image: altImages[i].image
               };
-                images.push(other);
+              images.push(other);
             }
           }
           else {
@@ -184,6 +185,11 @@ class App extends Component {
       return <p>Loading ...</p>;
     }
 
+    // small little find in store didn't appear on mobile, just desktop
+    var findInStore = "find in a store";
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) findInStore = "";
+
     return (
       <div className="content">
         <div className="grid-container">
@@ -201,7 +207,7 @@ class App extends Component {
             <div className="grid-buttons">
               <div className="grid-button">
                 <button name="pickUpButton" data-testid="item-instore" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
-                <div className="small centered">find in a store</div>
+                <div className="small centered findInStore">{findInStore}</div>
                 </div>
                 <div className="grid-button">
                 <button name="addToCartButton" data-testid="item-online" disabled={!this.state.online} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
@@ -212,7 +218,7 @@ class App extends Component {
                 <div className="large">returns</div>
               </div>
               <div className="grid-return">
-                <div className="small" data-testid="item-return">The item must be returned within 30 days of the ship date. See return policy for details. Price, promotions, styles and availiblity may vary by store and online.</div>
+                <div className="small hr-vert return-desc" data-testid="item-return">The item must be returned within 30 days of the ship date. See return policy for details. Price, promotions, styles and availiblity may vary by store and online.</div>
               </div>
             </div>
             <div className="grid-3buttons">
@@ -232,7 +238,6 @@ class App extends Component {
             <Reviews proReview={this.state.proReview} conReview={this.state.conReview} />
           </div>
           <div className="grid-item">
-
           </div>
         </div>
       </div>
