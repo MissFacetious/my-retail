@@ -206,11 +206,11 @@ class App extends Component {
             <Quantity quantity={this.state.quantity} />
             <div className="grid-buttons">
               <div className="grid-button">
-                <button name="pickUpButton" data-testid="item-instore" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
+                <button data-testid="item-instore" disabled={!this.state.instore} onClick={this.clickPickUp} className="targetLargeButton pickUpButton">Pick Up In Store</button>
                 <div className="small centered findInStore">{findInStore}</div>
                 </div>
                 <div className="grid-button">
-                <button name="addToCartButton" data-testid="item-online" disabled={!this.state.online} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
+                <button data-testid="item-online" disabled={!this.state.online} onClick={this.clickAddToCart} className="targetLargeButton addToCartButton">Add to Cart</button>
                 </div>
             </div>
             <div className="grid-returns">

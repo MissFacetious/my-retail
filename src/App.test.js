@@ -11,7 +11,6 @@ it('renders without crashing', () => {
   const app = ReactDOM.render(<App />, div);
 });
 
-
 it('text loaded on page', () => {
   // this shows us the html at least
   expect(getByTestId('item-title')).toHaveTextContent("Ninja™ Professional Blender with Single Serve Blending Cups");
@@ -25,9 +24,19 @@ it('price is printed on page', () => {
   expect(getByTestId('item-price')).toHaveTextContent("139.99");
 });
 
+// Better testing would be if we mutated the value of purchasingChannelCode outside of App
 it('buttons are enabled or disabled based on instore or online availability', () => {
-  // this.state.instore
-  // this.state.online
   expect(getByTestId('item-instore')).toHaveTextContent("Pick Up In Store");
+  var buttonStore = document.createElement("button");
+  buttonStore.className="targetLargeButton pickUpButton";
+  buttonStore.setAttribute('data-testid', "item-instore");
+  buttonStore.innerHTML = "Pick Up In Store";
+  expect(getByTestId("item-instore")).toEqual(buttonStore);
+
   expect(getByTestId('item-online')).toHaveTextContent("Add to Cart");
+  var buttonOnline = document.createElement("button");
+  buttonOnline.className="targetLargeButton addToCartButton";
+  buttonOnline.setAttribute('data-testid', "item-online");
+  buttonOnline.innerHTML = "Add to Cart";
+  expect(getByTestId("item-online")).toEqual(buttonOnline);
 });
