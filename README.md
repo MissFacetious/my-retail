@@ -4,7 +4,7 @@
 Create a sample webpage for a product available on an e-commerce website.
 
 ## Technology
-This page is written in Javascript using React as the UI layer. It imports a JSON file as information.
+This page is written in Javascript using React as the UI layer. It imports a JSON file as information. Test framework is react-testing-library which is a part of Jest, and built and deployed with npm to a GitPages site.
 
 ## Author
 Lisa Walkosz-Migliacio evilisa@gmail.com
