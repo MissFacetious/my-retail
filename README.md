@@ -30,6 +30,6 @@ Included is a test suite of unit tests for the app and components. Test the code
 #### Build for Production `npm run build`
 Create a built webpage that can be deployed.
 
-#### Deploy on GitPages
-Deploy the built static files on a remote server using `npm run build`. It will sent the build files to the gh-pages branch.
+#### Deploy on GitPages `npm run deploy`
+Deploy the built static files on a remote server using `npm run deploy`. It will sent the build files to the gh-pages branch.
 https://missfacetious.github.io/my-retail/ will then display the served files.
