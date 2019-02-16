@@ -3,7 +3,7 @@ import Carousel from './components/Carousel'
 import Reviews from './components/Reviews'
 import Quantity from './components/Quantity'
 import Highlights from './components/Highlights'
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
 

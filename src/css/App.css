@@ -238,7 +238,7 @@ button[disabled] {
 }
 
 .zoom-image {
-  background: url('./images/zoom.png');
+  background: url('./../images/zoom.png');
   background-position: center;
   background-repeat: no-repeat;
   width: 20px;
@@ -269,7 +269,7 @@ button[disabled] {
 }
 
 .carousel-back {
-  background: url('./images/back.png');
+  background: url('./../images/back.png');
   background-position: center;
   background-repeat: no-repeat;
   width: 20px;
@@ -278,7 +278,7 @@ button[disabled] {
 }
 
 .carousel-foward {
-  background: url('./images/forward.png');
+  background: url('./../images/forward.png');
   background-position: center;
   background-repeat: no-repeat;
   width: 20px;
@@ -287,7 +287,7 @@ button[disabled] {
 }
 
 .announce-image {
-  background: url('./images/red.png');
+  background: url('./../images/red.png');
   background-repeat: no-repeat;
   text-align: left;
   vertical-align: middle;
@@ -306,7 +306,7 @@ button[disabled] {
 }
 
 .redStar {
-  background: url('./images/star-red.png');
+  background: url('./../images/star-red.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 27px 24px;
@@ -315,7 +315,7 @@ button[disabled] {
 }
 
 .grayStar {
-  background: url('./images/star-gray.png') no-repeat;
+  background: url('./../images/star-gray.png') no-repeat;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 27px 24px;
@@ -341,7 +341,7 @@ button[disabled] {
 }
 
 .minus {
-  background: url('./images/minus.png') no-repeat;
+  background: url('./../images/minus.png') no-repeat;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 15px 15px;
@@ -353,7 +353,7 @@ button[disabled] {
 }
 
 .plus {
-  background: url('./images/plus.png') no-repeat;
+  background: url('./../images/plus.png') no-repeat;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 15px 15px;
